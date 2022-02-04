@@ -1,0 +1,23 @@
+
+        .footer{
+
+        margin-top: 400px;
+        text-align: center;
+        color: #333333;
+        font-size: 30px;
+        font-weight: 600;
+        margin-left: 2px;
+        margin-bottom: 1px;
+        }
+        .title{
+        font-size: 30px;
+
+        }
+
+        .sas{
+        background-color: #7f5eb5;
+
+        width: 80%;
+        border: 1px solid gray;
+
+        }

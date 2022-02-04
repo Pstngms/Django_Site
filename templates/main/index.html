@@ -1,0 +1,57 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}
+
+    {{ title }}
+
+{% endblock %}
+
+{% block content %}
+<link type="text/css" href="{% static 'main/css/styles.css' %}" rel="stylesheet">
+ <div class="bg-success p-2 text-dark bg-opacity-10">
+    <ul class="">
+    {% for p in posts %}
+        <ul>
+            <h1 class="display-4">{{p.title}}</h1>
+            <p class="lead">{{ p.content }}</p>
+
+            <p class="text-end">Добавлено: {{ p.time_create }}</p>
+            <p class="text-end">Последне изменение: {{ p.time_update }}</p>
+            <a  href="{{ p.url}}" class="text-decoration-none">Купить</a>
+            {% if request.user.is_authenticated %}
+                 {% if user.username == 'Mazut' %}
+                     <a  href="{{ p.id }}/delete/">Удалить</a>
+                     <a  href="{{ p.id }}/update/">Изменить</a>
+
+                 {% elif user.username == 'Kent' %}
+                     <a  href="{{ p.id }}/update/">Изменить</a>
+                 {% else %}
+
+                 {% endif %}
+
+            {% else %}
+
+
+            {% endif %}
+
+
+
+            <hr>
+        </ul>
+    {% endfor %}
+ </ul>
+</div>
+<nav class="pagination">
+ <ul class="pagination pagination-lg">
+     {% for p in paginator.page_range %}
+         <a class="page-link" href="?page={{ p }}">
+         <li class="page-item">
+            {{ p }}
+        </li>
+         </a>
+     {% endfor %}
+ </ul>
+</nav>
+
+
+{% endblock %}

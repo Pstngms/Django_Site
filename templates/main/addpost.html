@@ -1,0 +1,20 @@
+{% extends 'main/base.html' %}
+{% block title %}
+Добавление записи
+{% endblock %}
+
+{% block content %}
+    {% if request.user.is_authenticated %}
+        <form action="" method="post">
+            {% csrf_token %}
+            <table>
+            {{ form.as_table }}
+            </table>
+            <input type="submit" value="Опубликовать" />
+        </form>
+
+            {% else %}
+                <h1>Только авторизованные пользователи могут добавлять новые записи</h1>
+            {% endif %}
+
+{% endblock %}
